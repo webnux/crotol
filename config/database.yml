@@ -1,0 +1,25 @@
+default: &default  
+  adapter: postgresql
+  encoding: unicode  
+  pool: 5  
+  timeout: 5000
+
+development:
+  adapter: sqlite3
+  database: db/development.sqlite3
+  pool: 5
+  timeout: 5000
+
+test:
+  adapter: sqlite3
+  database: db/test.sqlite3
+  pool: 5
+  timeout: 5000
+
+production:
+  adapter: postgresql
+  encoding: unicode
+  database: d3of38g8sq8tcb
+  pool: 5
+  username: skbhmzquyzmfgk
+  password: 7aA2CDa3raSLF914Ds4svkgVgF

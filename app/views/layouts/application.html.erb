@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Bloggy</title>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+    <%= csrf_meta_tags %>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css">
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+     
+</head>
+
+<body id="page-top" class="index">
+
+<div class="container">
+<!-- Navigation -->
+<nav class="navbar navbar-default navbar-fixed-top">
+ 
+       
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header page-scroll">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <%= link_to "Cancan", root_path, class: "navbar-brand centerlinks" %>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="hidden">
+                        <a href="#page-top"></a>
+                    </li>
+                    
+                   <% if user_signed_in? %>
+                   
+                      <li class="page-scroll"> 
+                         <%= link_to(edit_user_registration_path) do %>      
+                            <%= image_tag(current_user.avatar, height: '50', width: '50', class: 'img-circle') %>
+                         <% end %>
+                      </li>
+                   
+                   <li class="page-scroll">
+                      <%= link_to "Forum", posts_path, class: "centerlinks"  %>
+                   </li>
+                   <li class="page-scroll">
+                      <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "centerlinks"  %>
+                   </li>
+                   
+                    <% else %>
+                    
+                      <li class="page-scroll">
+                        <%= link_to "Sign In", new_user_session_path  %>
+                      </li>
+                    
+                    <% end %>
+                    
+                    
+                    
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+ 
+    </nav>
+
+</div>
+<!--/.container-fluid -->
+
+<% if params[:controller] != "home" %>
+    <div class="space"></div>
+<% end %>
+
+<%= yield %>
+
+<script type="text/javascript">
+      var $container = $('#containme');
+      // initialize
+      $container.masonry({
+          isAnimated: true,
+          animationOptions: {
+             duration: 350,
+             easing: 'swing',
+             queue: false
+          },
+         itemSelector: '.blog-main'
+      });
+</script>
+</body>
+</html>
+
+
+
