@@ -52,6 +52,7 @@ ActiveRecord::Schema.define(version: 20150227155606) do
     t.string   "avatar"
     t.string   "provider"
     t.string   "uid"
+    t.string   "oauth_token"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
