@@ -1,8 +1,8 @@
-<blockquote>
+<blockquote id="block_<%= comment.id %>">
 <%= image_tag(comment.user.avatar, height: '25', width: '25', class: 'img-circle') %>
 <i><%= comment.content %></i>
 	<% if can? :destroy, comment %>
-		<%= link_to "Delete", post_comment_path(comment.post, comment), method: :delete %>
+		<%= link_to "Delete", post_comment_path(comment.post, comment), method: :delete, remote: true %>
 	<% end %>
 </blockquote>
 
