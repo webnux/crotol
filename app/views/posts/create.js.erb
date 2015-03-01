@@ -2,5 +2,5 @@ $('#mynewpostclose').click();
 $('#post_content').val('');
 $('#post_title').val('');
 $('#containme').prepend('<%= j render @post %>');
-$container.masonry( 'reload' );
+$('#containme').masonry( 'reload' );
 $('#post_<%= @post.id %>').hide().fadeIn(1000);

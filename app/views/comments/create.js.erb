@@ -2,6 +2,7 @@ $('#myanswercontent_<%= @post.id %>').val('');
 $('#myButton<%= @post.id %>').click();
 $('#mypost<%= @post.id %>').after('<%= j render @comment %>');
 $('#block_<%= @comment.id %>').hide().fadeIn(1000);
+$container.masonry( 'reload' );
 
 
 

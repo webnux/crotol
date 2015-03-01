@@ -15,6 +15,7 @@
    float: left;
    width: 325px;
    min-width: 325px;
+   height: auto;
  }
 
 #containme {

@@ -1,6 +1,7 @@
 $("#block_<%= @comment.id %>").fadeOut(500, function(e){
 	$("#block_<%= @comment.id %>").remove();
 	$('#myAnswers').remove();
+	$container.masonry( 'reload' );
 });
 
 
