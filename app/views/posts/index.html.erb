@@ -24,7 +24,7 @@
                 <div style="color: #3BB2D6;"><%= time_ago_in_words(post.created_at) %> ago by <%= post.user.name %></div>
                 <br>
 
-              <div class="btn-group" role="group" aria-label="..." id="mypost<%= post.id %>">
+              <div class="btn-group" role="group" aria-label="...">
                 <% if can? :update, post %>
                   <%= link_to 'Edit', edit_post_path(post), class: "btn btn-warning" %>
                 <% end %>
@@ -32,7 +32,7 @@
                   <%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %>
                 <% end %>
               </div>
-              <hr>
+              <hr id="mypost<%= post.id %>">
               <!-- Comments -->
               <% if post.comments.any? %>
                 
