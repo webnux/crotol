@@ -5,6 +5,7 @@ class PostsController < ApplicationController
 
   def index
     @posts = Post.all.order(:created_at => :desc)
+    @post = Post.new
 
     respond_to do |format|
         format.html
@@ -33,7 +34,8 @@ class PostsController < ApplicationController
       
       if @post.save
         format.html   { redirect_to posts_path, notice: 'Post was successfully created.' }
-        format.json { render json: @post }
+        format.json   { render json: @post }
+        format.js
       else
         format.html { render :new }
         format.json { render json: @post.errors, status: :unprocessable_entity }
