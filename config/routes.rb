@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
 
+  resources :friendships
+
+  get 'feeds' => 'feeds#index'
+
   root 'home#index'
 
   resources :posts do

@@ -51,3 +51,4 @@ class Ability
     # https://github.com/ryanb/cancan/wiki/Defining-Abilities
   end
 end
+

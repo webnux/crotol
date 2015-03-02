@@ -39,7 +39,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <%= link_to "Cancan", root_path, class: "navbar-brand centerlinks" %>
+                <%= link_to "Bloggy", root_path, class: "navbar-brand centerlinks" %>
             </div>
 
             <!-- Collect the nav links, forms, and other content for toggling -->
@@ -51,28 +51,32 @@
                     
                    <% if user_signed_in? %>
                    
-                      <li class="page-scroll"> 
-                         <%= link_to(edit_user_registration_path) do %>      
-                            <%= image_tag(current_user.avatar, height: '50', width: '50', class: 'img-circle') %>
-                         <% end %>
-                      </li>
-                   
-                   <li class="page-scroll">
-                      <%= link_to "Forum", posts_path, class: "centerlinks"  %>
-                   </li>
-                   <li class="page-scroll">
-                      <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "centerlinks"  %>
-                   </li>
+                        <li class="page-scroll"> 
+                           <%= link_to(edit_user_registration_path) do %>      
+                              <%= image_tag(current_user.avatar, height: '50', width: '50', class: 'img-circle') %>
+                           <% end %>
+                        </li>
+
+                        <li class="page-scroll"> 
+                            <%= link_to "Feeds", feeds_path, class: "centerlinks"  %>
+                        </li>
+                         
+                         <li class="page-scroll">
+                            <%= link_to "Forum", posts_path, class: "centerlinks"  %>
+                         </li>
+                         <li class="page-scroll">
+                            <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "centerlinks"  %>
+                         </li>
                    
                     <% else %>
-                    
-                      <li class="page-scroll">
-                        <%= link_to "Sign In", new_user_session_path  %>
-                      </li>
-                   
-                      <li class="page-scroll">
-                         <%= link_to "Sign in with Facebook", user_omniauth_authorize_path(:facebook) %>
-                      </li>
+                        
+                        <li class="page-scroll">
+                          <%= link_to "Sign In", new_user_session_path  %>
+                        </li>
+                     
+                        <li class="page-scroll">
+                           <%= link_to "Sign in with Facebook", user_omniauth_authorize_path(:facebook) %>
+                        </li>
                     
                     <% end %>
                     

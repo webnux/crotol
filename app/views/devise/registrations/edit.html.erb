@@ -1,9 +1,32 @@
 <div class="text-center">
-  <%= image_tag("#{@cover}", height: '500', width: '650') %>
+  <h3>Friends</h3>
+    <% for friendship in @user.friendships %>
+      <br>
+      <%= image_tag(friendship.friend.avatar, height: '50', width: '50', class: 'img-circle') %>
+      <h4><%= friendship.friend.name %></h4>
+      <br>
+    <% end %>
 </div>
+
+<div class="text-center">
+  <h3>Users</h3>
+    <% @users.each do |user| %>
+          <br>
+          <%= image_tag(user.avatar, height: '50', width: '50', class: 'img-circle') %>
+          <h4><%= user.name %></h4>
+          <br>
+    <% end %>
+</div>
+
+<% if current_user.facebook.access_token != nil %>
+  <div class="text-center">
+    <%= image_tag("#{@cover}", height: '500', width: '650') %>
+  </div>
+<% end %>
+
 <hr>
 <div class="text-center">
-  <h1>Settings</h1>
+  <h3>Settings</h3>
 </div>
 <br><br>
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
@@ -34,9 +57,11 @@
 
   </div> <!-- ROW 1 -->
 
+
 </div> <!-- container -->
 
-<% end %>
+<% end %> <!-- Form Update -->
 
 <br>
 <br>
+
