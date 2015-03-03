@@ -1,29 +1,32 @@
 <div class="container">
   <div class="row">
+  
+  <div class="col-xs-6">
     <div class="text-center">
       <div class="jumbotron">
       <h1><span class="label label-success">Friends</span></h1>
-      <br><hr>
+      <br><hr id="add_here1">
         <% for friendship in @user.friendships %>
-          <%= image_tag(friendship.friend.avatar, height: '50', width: '50', class: 'img-circle') %>
-            <p><%= friendship.friend.name %> - <%= link_to "Remove", friendship_path(friendship, :other_user => friendship.friend), method: :delete %></p>
+           <%= render :partial => 'friendships/friendship', :locals => {:friendship => friendship} %>
         <% end %>
       </div>
     </div>
   </div>
-  <div class="row">
+
+  <div class="col-xs-6">
     <div class="text-center">
       <div class="jumbotron">
       <h1><span class="label label-info">Users</span></h1>
-      <br><hr>
+      <br><hr id="add_here2">
         <% for user in @users %>
-          <%= image_tag(user.avatar, height: '50', width: '50', class: 'img-circle') %>
-            <p><%= user.name %> - <%= link_to "Add Friend", friendships_path(:friend_id => user, :my_user => current_user), method: :post %></p>
+          <%= render :partial => 'friendships/user', :locals => {:user => user} %>
         <% end %>
       </div>
     </div>
   </div>
-</div>
+
+  </div> <!-- row -->
+</div> <!-- container -->
 
 <div class="container">
   <div class="row">

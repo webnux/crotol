@@ -1,0 +1,2 @@
+$("#friend_<%= @friendship1.id %>").remove();
+$("#add_here2").after('<%= j render :partial => "friendships/user", :locals => {:user => @friend_user} %>');

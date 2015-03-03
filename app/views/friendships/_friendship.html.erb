@@ -1,0 +1,4 @@
+<div id="friend_<%= friendship.id %>">
+	<%= image_tag(friendship.friend.avatar, height: '50', width: '50', class: 'img-circle') %>
+	<p><%= friendship.friend.name %> - <%= link_to "Remove", friendship_path(friendship, :friend_user => friendship.friend), method: :delete, remote: true %></p>
+</div>
