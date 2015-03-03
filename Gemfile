@@ -7,6 +7,8 @@ group :development, :test do
 	gem 'sqlite3'
 	gem 'spring'
 	gem 'figaro'
+	gem 'mocha'
+	gem "better_errors"
 end
 
 group :production do
@@ -51,6 +53,8 @@ gem 'omniauth-facebook'
 
 gem 'koala'
 
+
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
@@ -62,5 +66,3 @@ gem 'koala'
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]
-
-

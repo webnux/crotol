@@ -7,8 +7,13 @@ Rails.application.routes.draw do
   end
 
   devise_for :users, :controllers => { registrations: 'registrations', omniauth_callbacks: "omniauth_callbacks" }
+  
+  #post    'friendships' => 'friendships#create'
+  #delete  'friendship' => 'friendships#destroy'
+  resources :friendships
 
 
+  
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

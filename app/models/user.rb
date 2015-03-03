@@ -1,4 +1,6 @@
 class User < ActiveRecord::Base
+  has_many :friendships
+  has_many :friends, :through => :friendships
   has_many :posts
   has_many :comments, :through => :posts
   # Include default devise modules. Others available are:
@@ -30,11 +32,12 @@ class User < ActiveRecord::Base
           end
         
      end
-  end
+   end
    
    def facebook
       @facebook ||= Koala::Facebook::API.new(oauth_token)
    end
    
+   scope :all_except, ->(user) { where.not(id: (user.friends + [user]).map(&:id)) }
 
 end

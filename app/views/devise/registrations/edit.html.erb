@@ -1,42 +1,86 @@
-<div class="text-center">
-  <%= image_tag("#{@cover}", height: '500', width: '650') %>
-</div>
-<hr>
-<div class="text-center">
-  <h1>Settings</h1>
-</div>
-<br><br>
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-  
-<%= devise_error_messages! %>
-
-<div class="container"><!-- container -->
-
+<div class="container">
   <div class="row">
-
-    <div class="col-md-8">
-        <div class="input-group">
-          <span class="input-group-addon" id="basic-addon1">Name</span>
-            <%= f.text_field :name, autofocus: true, class: 'form-control' %>
-          </div>
-          <br>
-          <div class="input-group">
-            <span class="input-group-addon" id="basic-addon1">Avatar</span>
-            <%= f.text_field :avatar, class: 'form-control' %>
-          </div>
+    <div class="text-center">
+      <div class="jumbotron">
+      <h1><span class="label label-success">Friends</span></h1>
+      <br><hr>
+        <% for friendship in @user.friendships %>
+          <%= image_tag(friendship.friend.avatar, height: '50', width: '50', class: 'img-circle') %>
+            <p><%= friendship.friend.name %> - <%= link_to "Remove", friendship_path(friendship, :other_user => friendship.friend), method: :delete %></p>
+        <% end %>
       </div>
-
-    <div class="col-md-4">
-            <%= f.submit "Update my information", class: 'btn btn-info' %>
-            <br><br>
-            <%= link_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, class: "btn btn-danger" %>
     </div>
+  </div>
+  <div class="row">
+    <div class="text-center">
+      <div class="jumbotron">
+      <h1><span class="label label-info">Users</span></h1>
+      <br><hr>
+        <% for user in @users %>
+          <%= image_tag(user.avatar, height: '50', width: '50', class: 'img-circle') %>
+            <p><%= user.name %> - <%= link_to "Add Friend", friendships_path(:friend_id => user, :my_user => current_user), method: :post %></p>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
 
-  </div> <!-- ROW 1 -->
+<div class="container">
+  <div class="row">
+    <div class="text-center">
+      <div class="jumbotron">
+      <h1><span class="label label-warning">Cover</span></h1>
+      <br><hr>
+        <%= image_tag("#{@cover}", height: '500', width: '650') %>
+      </div>
+      </div>
+  </div>
+</div>
 
+<div class="container">
+  <div class="row">
+    <div class="jumbotron">
+      <div class="text-center">
+      <h1><span class="label label-danger">Settings</span></h1>
+      <br><hr>        
+      <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+
+          <%= devise_error_messages! %>
+
+          <div class="container"><!-- container -->
+
+            <div class="row"><!-- row -->
+
+              <div class="col-md-8">
+                    
+                    <div class="input-group">
+                      <span class="input-group-addon" id="basic-addon1">Name</span>
+                      <%= f.text_field :name, class: 'form-control' %>
+                    </div>
+                    <br>
+
+                    <div class="input-group">
+                      <span class="input-group-addon" id="basic-addon1">Avatar</span>
+                      <%= f.text_field :avatar, class: 'form-control' %>
+                    </div>
+
+                </div>
+
+              <div class="col-md-4">
+                      <%= f.submit "Update my information", class: 'btn btn-info' %>
+                      <br><br>
+                      <%= link_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, class: "btn btn-danger" %>
+              </div>
+
+            </div> <!-- ROW -->
+
+          </div> <!-- Container -->
+
+      <% end %> <!-- FORM -->
+
+      </div> <!-- text-center -->
+    </div> <!-- jumbotron -->
+  </div> <!-- row -->
 </div> <!-- container -->
 
-<% end %>
-
-<br>
-<br>
+<br><br>
