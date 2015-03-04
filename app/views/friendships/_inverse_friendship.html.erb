@@ -1,4 +1,4 @@
 <div id="inverse_friend_<%= inverse_friendship.id %>">
 	<%= image_tag(inverse_friendship.user.avatar, height: '50', width: '50', class: 'img-circle') %>
-	<p><%= inverse_friendship.user.name %> - <%= link_to "Remove", inverse_friendship, method: :delete %></p>	
+	<p><%= inverse_friendship.user.name %> - <%= link_to "Remove", inverse_friendship, method: :delete, :test => "inverse" %></p>	
 </div>
