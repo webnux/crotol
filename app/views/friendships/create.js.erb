@@ -1,2 +1,6 @@
-$("#user_<%= @friend_user.id %>").remove();
+$("#user_<%= @friend_user.id %>").hide('slow', function(){
+	$("#user_<%= @friend_user.id %>").remove();
+});
+
 $("#add_here1").after('<%= j render @friendship1 %>');
+$("#friend_<%= @friendship1.id %>").hide().show('slow');

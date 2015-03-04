@@ -1,8 +1,12 @@
 class User < ActiveRecord::Base
-  has_many :friendships
+  has_many :friendships, dependent: :destroy
   has_many :friends, :through => :friendships
+  has_many :inverse_friendships, :class_name => "Friendship", :foreign_key => "friend_id", dependent: :destroy
+  has_many :inverse_friends, :through => :inverse_friendships, :source => :user
   has_many :posts
   has_many :comments, :through => :posts
+
+  
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -37,7 +41,8 @@ class User < ActiveRecord::Base
    def facebook
       @facebook ||= Koala::Facebook::API.new(oauth_token)
    end
+
    
-   scope :all_except, ->(user) { where.not(id: (user.friends + [user]).map(&:id)) }
+   scope :all_except, ->(user) { where.not(id: ([user] + user.friends + user.inverse_friends).map(&:id)) }
 
 end
