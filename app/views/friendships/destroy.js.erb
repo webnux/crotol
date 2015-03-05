@@ -13,9 +13,9 @@
 
 	$("#inverse_friendship_<%= @inverse_friendship.id %>").hide('fast', function(){
 		$("#friendship_<%= @inverse_friendship.id %>").remove();
-		$("#add_here2").after('<%= j render :partial => "friendships/user", :locals => {:user => @inverse_friendship.friend} %>');
-		$("#user_<%= @inverse_friendship.friend.id %>").hide();
-		$("#user_<%= @inverse_friendship.friend.id %>").show('fast', function(){
+		$("#add_here2").after('<%= j render :partial => "friendships/user", :locals => {:user => @inverse_friendship.user} %>');
+		$("#user_<%= @inverse_friendship.user.id %>").hide();
+		$("#user_<%= @inverse_friendship.user.id %>").show('fast', function(){
 		});
 	});
 
