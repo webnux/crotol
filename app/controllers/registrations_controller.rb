@@ -2,8 +2,12 @@ class RegistrationsController < Devise::RegistrationsController
   
   
   def edit
-    @cover = current_user.facebook.get_object("me?fields=cover")["cover"]["source"]
-    @users = User.all_except(current_user)
+    if current_user.facebook.access_token
+      @cover = current_user.facebook.get_object("me?fields=cover")["cover"]["source"]
+    end
+
+      @users = User.all_except(current_user)
+
   end
 
   private

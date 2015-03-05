@@ -1,6 +1,7 @@
-$("#user_<%= @friend_user.id %>").hide('slow', function(){
-	$("#user_<%= @friend_user.id %>").remove();
+$("#user_<%= @friendship.friend.id %>").hide('fast', function(){
+	$("#user_<%= @friendship.friend.id %>").remove();
+	$("#add_here1").after('<%= j render @friendship %>');
+	$("#friendship_<%= @friendship.id %>").hide();
+	$("#friendship_<%= @friendship.id %>").show('fast', function(){
+	});
 });
-
-$("#add_here1").after('<%= j render @friendship1 %>');
-$("#friend_<%= @friendship1.id %>").hide().show('slow');

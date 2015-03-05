@@ -1,4 +1,4 @@
 <div id="user_<%= user.id %>">
     <%= image_tag(user.avatar, height: '50', width: '50', class: 'img-circle') %>
-    <p><%= user.name %> - <%= link_to "Add Friend", friendships_path(:friend_id => user), method: :post %></p>
+    <p><%= user.name %> - <%= link_to "Add Friend", friendships_path(:friend_id => user), method: :post, remote: true %></p>
 </div>

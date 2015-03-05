@@ -6,10 +6,10 @@
       <div class="jumbotron">
       <h1><span class="label label-success">Friends</span></h1>
         <br><hr id="add_here1">
-          <% for friendship in @user.friendships %>
+          <% for friendship in current_user.friendships %>
              <%= render :partial => 'friendships/friendship', :locals => {:friendship => friendship} %>
           <% end %>
-          <% for inverse_friendship in @user.inverse_friendships %>
+          <% for inverse_friendship in current_user.inverse_friendships %>
              <%= render :partial => 'friendships/inverse_friendship', :locals => {:inverse_friendship => inverse_friendship} %>
           <% end %>
       </div>
