@@ -8,8 +8,6 @@ Rails.application.routes.draw do
 
   devise_for :users, :controllers => { registrations: 'registrations', omniauth_callbacks: "omniauth_callbacks" }
   
-  #post    'friendships' => 'friendships#create'
-  #delete  'friendship' => 'friendships#destroy'
   resources :friendships
 
 
