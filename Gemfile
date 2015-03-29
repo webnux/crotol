@@ -3,6 +3,7 @@ source 'https://rubygems.org'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.0'
 
+
 group :development, :test do
 	gem 'sqlite3'
 	gem 'spring'
@@ -10,6 +11,7 @@ group :development, :test do
 	gem 'mocha'
 	gem "better_errors"
 end
+
 
 group :production do
 	gem 'rails_12factor'
@@ -56,6 +58,8 @@ gem 'omniauth-twitter'
 gem 'twitter'
 
 gem 'koala'
+
+gem 'rails_admin'
 
 
 # Use ActiveModel has_secure_password
