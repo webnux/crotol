@@ -12,13 +12,13 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
       end
       
    end
-   
+
    
    def twitter     
      
-      @user = User.find_for_twitter_oauth(request.env["omniauth.auth"])      
+      @user = User.find_for_twitter_oauth(request.env["omniauth.auth"])    
    
-      if @user.persisted?
+       if @user.persisted?
          sign_in_and_redirect @user
        else
          session["devise.twitter_data"] = request.env["omniauth.auth"].except("extra")
@@ -26,6 +26,5 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
        end
       
    end
-
 
 end
