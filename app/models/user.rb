@@ -13,7 +13,7 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, :omniauthable
    
-  def self.find_for_facebook_oauth(auth, signed_in_resource=nil)
+  def self.find_for_facebook_oauth(auth)
     
      user = User.where(:provider => auth.provider, :uid => auth.uid).first
     
@@ -39,7 +39,7 @@ class User < ActiveRecord::Base
      
    end
 
-  def self.find_for_twitter_oauth(auth, signed_in_resource=nil)
+  def self.find_for_twitter_oauth(auth)
     
      user = User.where(:provider => auth.provider, :uid => auth.uid).first
     
