@@ -7,7 +7,6 @@ gem 'rails', '4.2.0'
 group :development, :test do
 	gem 'sqlite3'
 	gem 'spring'
-	gem 'figaro'
 	gem 'mocha'
 	gem "better_errors"
 end
@@ -60,6 +59,8 @@ gem 'twitter'
 gem 'koala'
 
 gem 'rails_admin'
+
+gem 'figaro'
 
 
 # Use ActiveModel has_secure_password
